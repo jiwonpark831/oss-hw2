@@ -80,11 +80,11 @@
             <main>
                 <div class="py-5 text-center">
                     <img src="logo.png" alt="" width="72" height="57">
-                    <h2>Checkout form</h2>
-                    <p>Below is an example form built entirely with Bootstrap’s form controls. Each required form group
-                        has a </p>
-                    <p> validation state that can be triggered by attempting to submit the form without completing it.
-                    </p>
+                    <h1>Dynamic Web Page</h1>
+                    <input id="input_append">
+                    <button onclick="listener_append()" style="background-color: blue; color: white;">추가</button>
+                    <button onclick="delete_all()" style="background-color: green; color: white;">삭제</button>
+                    <div id="div_append"></div>
                 </div>
 
                 <div class="row g-5">
@@ -320,6 +320,24 @@
                 return false;
             }
             return true;
+
+
+        }
+        function listener_append() {
+            let div_append = document.getElementById("div_append");
+            let input_append = document.getElementById("input_append").value;
+            if (input_append == "")
+                return false;
+            div_append.innerHTML += "<div onclick = 'listener_remove(this)'>" + input_append + "</div>"
+            document.getElementById("input_append").value = "";
+        }
+        function listener_remove(obj) {
+            obj.remove();
+        }
+        function delete_all() {
+            let div_append = document.getElementById("div_append");
+            div_append.innerHTML = "";
+            document.getElementById("input_append").value = "";
         }
     </script>
 </body>
